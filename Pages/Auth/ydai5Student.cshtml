@@ -1,0 +1,172 @@
+﻿@page
+@model ydai5.Auth.ydai5StudentModel
+@{
+    ViewData["Title"] = "New Student Registration";
+}
+<html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+                let isValid = true;
+
+                // Validate First Name (Required, Max Length: 50)
+                let firstName = $("#FirstName").val();
+                if (!firstName) {
+                    $("#FirstName").next(".text-danger").text("First name is required.");
+                    isValid = false;
+                } else if (firstName.length > 50) {
+                    $("#FirstName").next(".text-danger").text("First name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#FirstName").next(".text-danger").text("");
+                }
+
+                // Validate Last Name (Required, Max Length: 50)
+                let lastName = $("#LastName").val();
+                if (!lastName) {
+                    $("#LastName").next(".text-danger").text("Last name is required.");
+                    isValid = false;
+                } else if (lastName.length > 50) {
+                    $("#LastName").next(".text-danger").text("Last name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#LastName").next(".text-danger").text("");
+                }
+
+                // Validate Email (Regex)
+                let email = $("#Email").val();
+                let emailPattern = /^[a-zA-Z0-9._-]+@('@')[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                    if (!email) {
+                        $("#Email").next(".text-danger").text("Email address is required.");
+                        isValid = false;
+                    } else if (!emailPattern.test(email)) {
+                        $("#Email").next(".text-danger").text("Invalid email address.");
+                        isValid = false;
+                    } else {
+                        $("#Email").next(".text-danger").text("");
+                    }
+
+                    // Validate Program (Required, Max Length: 10)
+                    let program = $("#Program").val();
+                    if (!program) {
+                        $("#Program").next(".text-danger").text("Program is required.");
+                        isValid = false;
+                    } else if (program.length > 10) {
+                        $("#Program").next(".text-danger").text("Program cannot be longer than 10 characters.");
+                        isValid = false;
+                    } else {
+                        $("#Program").next(".text-danger").text("");
+                    }
+
+                    // Validate User ID (Required, Pattern: 4 letters followed by 4 digits)
+                    let userID = $("#UserID").val();
+                    let userIDPattern = /^[A-Z]{4}[0-9]{4}$/;
+                    if (!userID) {
+                        $("#UserID").next(".text-danger").text("User ID is required.");
+                        isValid = false;
+                    } else if (!userIDPattern.test(userID)) {
+                        $("#UserID").next(".text-danger").text("User ID must follow the pattern: 4 letters followed by 4 digits.");
+                        isValid = false;
+                    } else {
+                        $("#UserID").next(".text-danger").text("");
+                    }
+
+                    // Validate Password (Required, Min Length: 6, Max Length: 100)
+                    let password = $("#Password").val();
+                    if (!password) {
+                        $("#Password").next(".text-danger").text("Password is required.");
+                        isValid = false;
+                    } else if (password.length < 6 || password.length > 100) {
+                        $("#Password").next(".text-danger").text("Password must be between 6 and 100 characters.");
+                        isValid = false;
+                    } else {
+                        $("#Password").next(".text-danger").text("");
+                    }
+
+                    // Validate Confirm Password (Required, Must match Password)
+                    let confirmPassword = $("#ConfirmPassword").val();
+                    if (!confirmPassword) {
+                        $("#ConfirmPassword").next(".text-danger").text("Confirm password is required.");
+                        isValid = false;
+                    } else if (confirmPassword !== password) {
+                        $("#ConfirmPassword").next(".text-danger").text("Passwords do not match.");
+                        isValid = false;
+                    } else {
+                        $("#ConfirmPassword").next(".text-danger").text("");
+                    }
+
+                    // Prevent form submission if there are validation errors
+                    if (!isValid) {
+                        alert('invalid')
+                        event.preventDefault();
+                    } else {
+                        alert('valid')
+                        event.preventDefault();
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>New Student Registration</h2>
+
+            <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-primary">Back</button>
+
+            <form method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label asp-for="FirstName">FirstName</label>
+                    <input asp-for="FirstName" id="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName">LastName</label>
+                    <input asp-for="LastName" id="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" id="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Program">Program</label>
+                    <select asp-for="Program" id="Program" class="form-control">
+                        <option value="BAIST">Bachelor of Applied Information Systems Technology (BAIST)</option>
+                        <option value="BBA">Bachelor of Business Administration (BBA)</option>
+                        <option value="PHOT">Photographic Technology (PHOT)</option>
+                    </select>
+                    <span asp-validation-for="Program" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserID">UserID</label>
+                    <input asp-for="UserID" id="UserID" class="form-control" />
+                    <span asp-validation-for="UserID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password" id="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">ConfirmPassword</label>
+                    <input asp-for="ConfirmPassword" id="ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-5">Register</button>
+            </form>
+        </div>
+    </body>
+</html>

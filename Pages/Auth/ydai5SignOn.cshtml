@@ -1,0 +1,33 @@
+﻿@page
+@model ydai5.Auth.ydai5SignOnModel
+@{
+    ViewData["Title"] = "Sign On";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>User Sign On</h2>
+
+        <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-primary">Back</button>
+
+        <form method="get">
+            <label asp-for="UserID">UserID</label>
+            <input asp-for="UserID" class="form-control" name="UserID" />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" name="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <button type="submit" class="btn btn-primary mt-5">Sign On</button>
+        </form>
+        <div>@Model.Message</div>
+    </div>
+</body>
+</html>

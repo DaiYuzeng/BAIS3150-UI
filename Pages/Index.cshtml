@@ -1,0 +1,10 @@
+﻿@page
+@model ydai5.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    This is the home page
+    <button onclick="location.href='@Url.Page("/auth/ydai5Welcome")'" class="btn btn-primary">Go to Welcome Page</button>
+</div>

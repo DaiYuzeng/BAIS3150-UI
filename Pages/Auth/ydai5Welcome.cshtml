@@ -1,0 +1,13 @@
+﻿@page
+@model ydai5.Auth.ydai5WelcomeModel
+@{
+    ViewData["Title"] = "Welcome Page";
+}
+
+<div class="text-center">
+    <h2>Welcome to BAIS3150</h2>
+    <p>Please select an option below:</p>
+    <button onclick="location.href='@Url.Page("/auth/ydai5SignOn")'" class="btn btn-primary">I am an existing student</button>
+    <button onclick="location.href='@Url.Page("/auth/ydai5Student")'" class="btn btn-secondary">I am a new student</button>
+    <button onclick="location.href='@Url.Page("/categories/ydai5Categories")'" class="btn btn-secondary">View Categroy List</button>
+</div>
