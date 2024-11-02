@@ -1,0 +1,48 @@
+﻿@page
+@model ydai5.Pages.FindStudentModel
+@{
+    ViewData["Title"] = "Find Student";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Find Student</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Find Student</h2>
+        <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-secondary mb-3">Back</button>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="StudentID">Student ID</label>
+                <input asp-for="StudentID" class="form-control" />
+                <span class="text-danger"></span>
+                @Html.ValidationMessage("StudentID")
+            </div>
+
+            <input type="submit" name="Submit" value="Find Student" class="btn btn-primary" />
+        </form>
+        <div class="mt-4">
+            <h4>@Model.Message</h4>
+            @if (Model.EnrolledStudent != null)
+            {
+                <div class="card p-3">
+                    <p><strong>Student ID:</strong> @Model.EnrolledStudent.StudentID</p>
+                    <p><strong>First Name:</strong> @Model.EnrolledStudent.FirstName</p>
+                    <p><strong>Last Name:</strong> @Model.EnrolledStudent.LastName</p>
+                    <p><strong>Email:</strong> @Model.EnrolledStudent.Email</p>
+                    <button onclick="location.href='@Url.Page("/ModifyStudent", new { studentId = Model.EnrolledStudent.StudentID })'" class="btn btn-warning mt-3">
+                        Modify Student
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+</html>

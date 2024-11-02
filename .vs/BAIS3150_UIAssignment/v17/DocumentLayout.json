@@ -1,0 +1,232 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142student.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142student.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142student.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142student.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\technicalservices\\categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:technicalservices\\categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\domain\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:domain\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142categories.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142categories.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142signon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142signon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142signon.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142signon.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\pages\\ywang142welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:pages\\ywang142welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\domain\\requestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:domain\\requestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|c:\\users\\54260\\onedrive\\onedrive\\baist\\bais3150  softwawre development tools\\week 7 ui\\bais3150_uiassignment\\bais3150_uiassignment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FD7CB68A-277A-43D5-B0F9-3DFEA11B5381}|BAIS3150_UIAssignment.csproj|solutionrelative:bais3150_uiassignment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ywang142Welcome.cshtml",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Welcome.cshtml",
+              "RelativeDocumentMoniker": "Pages\\ywang142Welcome.cshtml",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Welcome.cshtml",
+              "RelativeToolTip": "Pages\\ywang142Welcome.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T17:01:11.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T18:50:43.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ywang142Categories.cshtml",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Categories.cshtml",
+              "RelativeDocumentMoniker": "Pages\\ywang142Categories.cshtml",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Categories.cshtml",
+              "RelativeToolTip": "Pages\\ywang142Categories.cshtml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAACAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T15:26:27.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Categories.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\TechnicalServices\\Categories.cs",
+              "RelativeDocumentMoniker": "TechnicalServices\\Categories.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\TechnicalServices\\Categories.cs",
+              "RelativeToolTip": "TechnicalServices\\Categories.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwA4AAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:28:51.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ywang142SignOn.cshtml",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142SignOn.cshtml",
+              "RelativeDocumentMoniker": "Pages\\ywang142SignOn.cshtml",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142SignOn.cshtml",
+              "RelativeToolTip": "Pages\\ywang142SignOn.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T15:25:43.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ywang142Student.cshtml",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Student.cshtml",
+              "RelativeDocumentMoniker": "Pages\\ywang142Student.cshtml",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Student.cshtml",
+              "RelativeToolTip": "Pages\\ywang142Student.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAFUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T15:25:45.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ywang142SignOn.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142SignOn.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\ywang142SignOn.cshtml.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142SignOn.cshtml.cs",
+              "RelativeToolTip": "Pages\\ywang142SignOn.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:25:45.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ywang142Student.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Student.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\ywang142Student.cshtml.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Student.cshtml.cs",
+              "RelativeToolTip": "Pages\\ywang142Student.cshtml.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAADwv1UAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:25:46.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ywang142Categories.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Categories.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\ywang142Categories.cshtml.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\ywang142Categories.cshtml.cs",
+              "RelativeToolTip": "Pages\\ywang142Categories.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:26:30.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Welcome.cshtml",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\Welcome.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Welcome.cshtml",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Pages\\Welcome.cshtml",
+              "RelativeToolTip": "Pages\\Welcome.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T15:47:02.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Domain\\Category.cs",
+              "RelativeDocumentMoniker": "Domain\\Category.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Domain\\Category.cs",
+              "RelativeToolTip": "Domain\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:29:42.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RequestManager.cs",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Domain\\RequestManager.cs",
+              "RelativeDocumentMoniker": "Domain\\RequestManager.cs",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\Domain\\RequestManager.cs",
+              "RelativeToolTip": "Domain\\RequestManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:35:52.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BAIS3150_UIAssignment.csproj",
+              "DocumentMoniker": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\BAIS3150_UIAssignment.csproj",
+              "RelativeDocumentMoniker": "BAIS3150_UIAssignment.csproj",
+              "ToolTip": "C:\\Users\\54260\\OneDrive\\Onedrive\\BAIST\\BAIS3150  Softwawre Development Tools\\Week 7 UI\\BAIS3150_UIAssignment\\BAIS3150_UIAssignment.csproj",
+              "RelativeToolTip": "BAIS3150_UIAssignment.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-01T15:28:13.904Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+﻿@page
+@model ydai5.Pages.CreateProgramModel
+@{
+    ViewData["Title"] = "Create Program";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Create Program</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Create Program</h2>
+        <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-secondary mb-3">Back</button>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="ProgramCode">Program Code</label>
+                <input asp-for="ProgramCode" class="form-control" />
+                <span asp-validation-for="ProgramCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Program Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <input type="submit" name="Submit" value="Create Program" class="btn btn-primary" />
+        </form>
+        <div>@Model.Message</div>
+    </div>
+</body>
+</html>

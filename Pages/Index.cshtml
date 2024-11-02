@@ -1,0 +1,43 @@
+﻿@page
+@model ydai5.Pages.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Navigation Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Navigation Page</h2>
+        <p>Use the buttons below to navigate to different sections of the student management system.</p>
+
+        <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/CreateProgram")" class="btn btn-primary btn-block">Create Program</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/EnrollStudent")" class="btn btn-primary btn-block">Enroll Student</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/FindProgram")" class="btn btn-primary btn-block">Find Program</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/FindStudent")" class="btn btn-primary btn-block">Find Student</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/ModifyStudent")" class="btn btn-warning btn-block">Modify Student</a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="@Url.Page("/RemoveStudent")" class="btn btn-danger btn-block">Remove Student</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

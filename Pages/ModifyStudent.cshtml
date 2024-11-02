@@ -1,0 +1,112 @@
+﻿@page
+@model ydai5.Pages.ModifyStudentModel
+@{
+    ViewData["Title"] = "Modify Student";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Modify Student</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Modify Student</h2>
+        <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-secondary mb-3">Back</button>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="StudentID">Student ID</label>
+                <input asp-for="StudentID" id="StudentID" class="form-control" readonly />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("StudentID")
+            </div>
+
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input asp-for="FirstName" id="FirstName" class="form-control" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("FirstName")
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input asp-for="LastName" id="LastName" class="form-control" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("LastName")
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input asp-for="Email" id="Email" class="form-control" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("Email")
+            </div>
+
+            <input type="submit" name="Submit" value="Modify Student" class="btn btn-primary" />
+        </form>
+        <div>@Model.Message</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("form").on("submit", function (event) {
+                let isValid = true;
+
+                // Student ID is read-only, no need for validation
+
+                // Validate First Name (Required, Max Length: 50)
+                let firstName = $("#FirstName").val().trim();
+                if (!firstName) {
+                    $("#FirstName").addClass("is-invalid");
+                    $("#FirstName").next(".invalid-feedback").text("First name is required.");
+                    isValid = false;
+                } else if (firstName.length > 50) {
+                    $("#FirstName").addClass("is-invalid");
+                    $("#FirstName").next(".invalid-feedback").text("First name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#FirstName").removeClass("is-invalid").addClass("is-valid");
+                    $("#FirstName").next(".invalid-feedback").text("");
+                }
+
+                // Validate Last Name (Required, Max Length: 50)
+                let lastName = $("#LastName").val().trim();
+                if (!lastName) {
+                    $("#LastName").addClass("is-invalid");
+                    $("#LastName").next(".invalid-feedback").text("Last name is required.");
+                    isValid = false;
+                } else if (lastName.length > 50) {
+                    $("#LastName").addClass("is-invalid");
+                    $("#LastName").next(".invalid-feedback").text("Last name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#LastName").removeClass("is-invalid").addClass("is-valid");
+                    $("#LastName").next(".invalid-feedback").text("");
+                }
+
+                // Validate Email (Required, Valid Email Address)
+                let email = $("#Email").val().trim();
+                if (!email) {
+                    $("#Email").addClass("is-invalid");
+                    $("#Email").next(".invalid-feedback").text("Email address is required.");
+                    isValid = false;
+                } else {
+                    $("#Email").removeClass("is-invalid").addClass("is-valid");
+                    $("#Email").next(".invalid-feedback").text("");
+                }
+
+                // Prevent form submission if there are validation errors
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
