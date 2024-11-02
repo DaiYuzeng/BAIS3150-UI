@@ -1,0 +1,116 @@
+# .gitignore for ASP.NET Core projects
+
+# Ignore Visual Studio temporary files, build results, and
+# build directories
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]pp_Data/
+bin/
+obj/
+out/
+publish/
+
+# User-specific files
+.vscode/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Auto-generated UI files
+Generated_Code/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# DotNet specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DNX
+.project
+.project.lock.json
+artifacts/
+project.lock.json
+dnx.lock
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Microsoft Edge Website Cache
+*.data
+*.crdownload
+
+# Log files
+*.log
+
+# NPM Packages
+node_modules/
+
+# Yarn files
+.yarn/
+.yarnrc.yml
+
+# Mac system files
+.DS_Store
+*.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on USB drives or network volumes
+.Spotlight-V100
+.Trashes
+
+# Temporary files
+*.swp
+*.temp
+*.tmp
+*.bak
+*.orig
+*.inprogress
+
+# Backup files
+*~.nib
+*.bak
+*.orig
+*.inprogress
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variable files
+.env
+.env.*.local
+
+# Certificates
+*.pfx
+*.p12
+
+# Build directories
+artifacts/
+build/

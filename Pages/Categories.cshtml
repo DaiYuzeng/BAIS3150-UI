@@ -1,0 +1,45 @@
+﻿@page
+@model ydai5.Pages.ydai5CategoriesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Categories</title>
+</head>
+<body>
+    <div class="container">
+    <h2>Northwind Product Categories</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.CategoryList)
+            {
+                <tr>
+                    <td>@category.CategoryName</td>
+                    <td>@category.Description</td>
+                    <td>
+                        @if (category.Picture != null && category.Picture.Length > 0)
+                        {
+                            <img src="data:image/bmp;base64,@category.Picture" alt="@category.CategoryName" />
+                        }
+                        else
+                        {
+                            <span>No Image Available</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

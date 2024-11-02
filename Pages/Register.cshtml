@@ -1,0 +1,189 @@
+﻿@page
+@model ydai5.Pages.RegisterModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script> *@
+    <script>
+        $(document).ready(function () {
+            $("form").on("submit", function (event) {
+                let isValid = true;
+
+                // Validate First Name (Required, Max Length: 50)
+                let firstName = $("#FirstName").val().trim();
+                if (!firstName) {
+                    $("#FirstName").addClass("is-invalid");
+                    $("#FirstName").next(".invalid-feedback").text("First name is required.");
+                    isValid = false;
+                } else if (firstName.length > 50) {
+                    $("#FirstName").addClass("is-invalid");
+                    $("#FirstName").next(".invalid-feedback").text("First name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#FirstName").removeClass("is-invalid").addClass("is-valid");
+                    $("#FirstName").next(".invalid-feedback").text("");
+                }
+
+                // Validate Last Name (Required, Max Length: 50)
+                let lastName = $("#LastName").val().trim();
+                if (!lastName) {
+                    $("#LastName").addClass("is-invalid");
+                    $("#LastName").next(".invalid-feedback").text("Last name is required.");
+                    isValid = false;
+                } else if (lastName.length > 50) {
+                    $("#LastName").addClass("is-invalid");
+                    $("#LastName").next(".invalid-feedback").text("Last name cannot be longer than 50 characters.");
+                    isValid = false;
+                } else {
+                    $("#LastName").removeClass("is-invalid").addClass("is-valid");
+                    $("#LastName").next(".invalid-feedback").text("");
+                }
+
+                // Validate Email (Required)
+                let email = $("#Email").val().trim();
+                if (!email) {
+                    $("#Email").addClass("is-invalid");
+                    $("#Email").next(".invalid-feedback").text("Email address is required.");
+                    isValid = false;
+                } else {
+                    $("#Email").removeClass("is-invalid").addClass("is-valid");
+                    $("#Email").next(".invalid-feedback").text("");
+                }
+
+                // Validate Program (Required)
+                let program = $("#Program").val();
+                if (!program) {
+                    $("#Program").addClass("is-invalid");
+                    $("#Program").next(".invalid-feedback").text("Program is required.");
+                    isValid = false;
+                } else {
+                    $("#Program").removeClass("is-invalid").addClass("is-valid");
+                    $("#Program").next(".invalid-feedback").text("");
+                }
+
+                // Validate User ID (Required, Pattern: 4 letters followed by 4 digits)
+                let userID = $("#UserID").val().trim();
+                let userIDPattern = /^[A-Z]{4}[0-9]{4}$/;
+                if (!userID) {
+                    $("#UserID").addClass("is-invalid");
+                    $("#UserID").next(".invalid-feedback").text("User ID is required.");
+                    isValid = false;
+                } else if (!userIDPattern.test(userID)) {
+                    $("#UserID").addClass("is-invalid");
+                    $("#UserID").next(".invalid-feedback").text("User ID must follow the pattern: 4 letters followed by 4 digits.");
+                    isValid = false;
+                } else {
+                    $("#UserID").removeClass("is-invalid").addClass("is-valid");
+                    $("#UserID").next(".invalid-feedback").text("");
+                }
+
+                // Validate Password (Required, Min Length: 6, Max Length: 100)
+                let password = $("#Password").val();
+                if (!password) {
+                    $("#Password").addClass("is-invalid");
+                    $("#Password").next(".invalid-feedback").text("Password is required.");
+                    isValid = false;
+                } else if (password.length < 6 || password.length > 100) {
+                    $("#Password").addClass("is-invalid");
+                    $("#Password").next(".invalid-feedback").text("Password must be between 6 and 100 characters.");
+                    isValid = false;
+                } else {
+                    $("#Password").removeClass("is-invalid").addClass("is-valid");
+                    $("#Password").next(".invalid-feedback").text("");
+                }
+
+                // Validate Confirm Password (Required, Must match Password)
+                let confirmPassword = $("#ConfirmPassword").val();
+                if (!confirmPassword) {
+                    $("#ConfirmPassword").addClass("is-invalid");
+                    $("#ConfirmPassword").next(".invalid-feedback").text("Confirm password is required.");
+                    isValid = false;
+                } else if (confirmPassword !== password) {
+                    $("#ConfirmPassword").addClass("is-invalid");
+                    $("#ConfirmPassword").next(".invalid-feedback").text("Passwords do not match.");
+                    isValid = false;
+                } else {
+                    $("#ConfirmPassword").removeClass("is-invalid").addClass("is-valid");
+                    $("#ConfirmPassword").next(".invalid-feedback").text("");
+                }
+
+                // Prevent form submission if there are validation errors
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <button onclick="location.href='@Url.Page("/Welcome")'" class="btn btn-secondary mb-3">Back</button>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input asp-for="FirstName" id="FirstName" class="form-control" value="@Model.FirstName" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("FirstName")
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input asp-for="LastName" id="LastName" class="form-control" value="@Model.LastName" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("LastName")
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input asp-for="Email" id="Email" class="form-control" value="@Model.Email" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("Email")
+            </div>
+
+            <div class="form-group">
+                <label for="Program">Program</label>
+                <select asp-for="Program" id="Program" class="form-control">
+                    <option value="">Select a program</option>
+                    <option value="BAIST">Bachelor of Applied Information Systems Technology (BAIST)</option>
+                    <option value="BBA">Bachelor of Business Administration (BBA)</option>
+                    <option value="PHOT">Photographic Technology (PHOT)</option>
+                </select>
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("Program")
+            </div>
+
+            <div class="form-group">
+                <label for="UserID">User ID</label>
+                <input asp-for="UserID" id="UserID" class="form-control" value="@Model.UserID" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("UserID")
+            </div>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input asp-for="Password" id="Password" type="password" class="form-control" value="@Model.Password" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("Password")
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input asp-for="ConfirmPassword" id="ConfirmPassword" type="password" class="form-control" value="@Model.ConfirmPassword" />
+                <span class="invalid-feedback"></span>
+                @Html.ValidationMessage("ConfirmPassword")
+            </div>
+
+            <input type="submit" name="Submit" value="Submit" class="btn btn-primary" />
+        </form>
+        @Model.Message
+    </div>
+</body>
+</html>
