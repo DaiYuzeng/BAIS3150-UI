@@ -11,16 +11,16 @@ namespace ydai5.Pages
 
         public string Message { get; set; } = string.Empty;
 
-        public Student? FoundStudent { get; set; } = null;
+        public Student? EnrolledStudent { get; set; } = null;
 
         public void OnGet(string studentId)
         {
             if (!string.IsNullOrEmpty(studentId))
             {
                 BCS RequestDirector = new();
-                FoundStudent = RequestDirector.FindStudent(studentId);
+                EnrolledStudent = RequestDirector.FindStudent(studentId);
 
-                if (FoundStudent == null)
+                if (EnrolledStudent == null)
                 {
                     Message = "Student not found.";
                 }
@@ -33,35 +33,18 @@ namespace ydai5.Pages
 
         public void OnPost()
         {
-            // Validate Student ID
-            if (string.IsNullOrEmpty(StudentID))
-            {
-                ModelState.AddModelError("StudentID", "Student ID is required!");
-            }
-            else if (StudentID.Length > 10)
-            {
-                ModelState.AddModelError("StudentID", "Student ID must not exceed 10 characters.");
-            }
+            BCS RequestDirector = new();
 
-            if (ModelState.IsValid)
+            bool Confirmation = RequestDirector.RemoveStudent(StudentID);
+
+            if (Confirmation)
             {
-                BCS RequestDirector = new();
-
-                bool Confirmation = RequestDirector.RemoveStudent(StudentID);
-
-                if (Confirmation)
-                {
-                    Message = "Student has been removed successfully.";
-                    FoundStudent = null; // Clear the FoundStudent to remove the details from the screen
-                }
-                else
-                {
-                    Message = "Failed to remove the student.";
-                }
+                Message = "Student has been removed successfully.";
+                EnrolledStudent = null; // Clear the FoundStudent to remove the details from the screen
             }
             else
             {
-                Message = "Form not valid!";
+                Message = "Failed to remove the student.";
             }
         }
     }

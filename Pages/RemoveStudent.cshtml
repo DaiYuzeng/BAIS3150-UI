@@ -4,76 +4,33 @@
     ViewData["Title"] = "Remove Student";
     Layout = "_Layout";
 }
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Remove Student</title>
-</head>
+<h2>Remove Student</h2>
 
-<body>
-    <div class="container mt-5">
-        <h2>Remove Student</h2>
-        <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-secondary mb-3">Back</button>
-
-        <form method="get">
-            <div class="form-group">
-                <label for="StudentID">Enter Student ID to Search</label>
-                <input asp-for="StudentID" id="StudentID" class="form-control" />
-                <span class="invalid-feedback"></span>
-                @Html.ValidationMessage("StudentID")
-            </div>
-
-            <input type="submit" name="Search" value="Find Student" class="btn btn-primary" />
-        </form>
-
-        @if (Model.FoundStudent != null)
-        {
-            <div class="mt-4">
-                <h4>Student Details</h4>
-                <p><strong>Student ID:</strong> @Model.FoundStudent.StudentID</p>
-                <p><strong>First Name:</strong> @Model.FoundStudent.FirstName</p>
-                <p><strong>Last Name:</strong> @Model.FoundStudent.LastName</p>
-                <p><strong>Email:</strong> @Model.FoundStudent.Email</p>
-
-                <form method="post">
-                    <input type="hidden" asp-for="StudentID" />
-                    <input type="submit" name="Submit" value="Remove Student" class="btn btn-danger" />
-                </form>
-            </div>
-        }
-
-        <div class="mt-3 text-danger">@Model.Message</div>
+<form method="get">
+    <div class="form-group">
+        <label for="StudentID">Enter Student ID to Search</label>
+        <input name="StudentID" class="form-control" />
+        <span class="invalid-feedback"></span>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $("form[method='get']").on("submit", function (event) {
-                let isValid = true;
+    <input type="submit" name="Search" value="Find Student" class="btn btn-primary" />
+</form>
 
-                // Validate Student ID (Required)
-                let studentID = $("#StudentID").val().trim();
-                if (!studentID) {
-                    $("#StudentID").addClass("is-invalid");
-                    $("#StudentID").next(".invalid-feedback").text("Student ID is required.");
-                    isValid = false;
-                } else if (studentID.length > 10) {
-                    $("#StudentID").addClass("is-invalid");
-                    $("#StudentID").next(".invalid-feedback").text("Student ID must not exceed 10 characters.");
-                    isValid = false;
-                } else {
-                    $("#StudentID").removeClass("is-invalid").addClass("is-valid");
-                    $("#StudentID").next(".invalid-feedback").text("");
-                }
+@if (Model.EnrolledStudent != null)
+{
+    <div class="mt-4">
+        <h4>Student Details</h4>
+        <p><strong>Student ID:</strong> @Model.EnrolledStudent.StudentID</p>
+        <p><strong>First Name:</strong> @Model.EnrolledStudent.FirstName</p>
+        <p><strong>Last Name:</strong> @Model.EnrolledStudent.LastName</p>
+        <p><strong>Email:</strong> @Model.EnrolledStudent.Email</p>
 
-                // Prevent form submission if there are validation errors
-                if (!isValid) {
-                    event.preventDefault();
-                }
-            });
-        });
-    </script>
-</body>
+        <form method="post">
+            <input type="hidden" name="StudentID" />
+            <input type="submit" name="Submit" value="Remove Student" class="btn btn-danger" />
+        </form>
+    </div>
+}
 
-</html>
+<div class="mt-3 text-danger">@Model.Message</div>

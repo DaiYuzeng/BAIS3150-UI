@@ -4,6 +4,12 @@
     ViewData["Title"] = "Create Program";
     Layout = "_Layout";
 }
+@section scriptContent
+{
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
 
 <h2>Create Program</h2>
     <button onclick="location.href='@Url.Page("/Index")'" class="btn btn-secondary mb-3">Back</button>

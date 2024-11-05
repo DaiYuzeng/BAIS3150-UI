@@ -19,34 +19,16 @@ namespace ydai5.Pages
 
         public void OnPost()
         {
-            // Validate Student ID
-            if (string.IsNullOrEmpty(StudentID))
-            {
-                ModelState.AddModelError("StudentID", "Student ID is required!");
-            }
-            else if (StudentID.Length > 10)
-            {
-                ModelState.AddModelError("StudentID", "Student ID must not exceed 10 characters.");
-            }
+            BCS RequestDirector = new();
+            EnrolledStudent = RequestDirector.FindStudent(StudentID);
 
-            if (ModelState.IsValid)
+            if (EnrolledStudent != null)
             {
-                // Assuming BCS is defined in Domain and has a method to find a student by ID
-                BCS RequestDirector = new();
-                EnrolledStudent = RequestDirector.FindStudent(StudentID);
-
-                if (EnrolledStudent != null)
-                {
-                    Message = "Student found:";
-                }
-                else
-                {
-                    Message = "No student found with the provided ID.";
-                }
+                Message = "Student found:";
             }
             else
             {
-                Message = "Form not valid!";
+                Message = "No student found with the provided ID.";
             }
         }
     }

@@ -44,84 +44,30 @@ namespace ydai5.Pages
 
         public void OnPost()
         {
-            // Validate Student ID - Since it is read-only, we just check if it is still valid
-            if (string.IsNullOrEmpty(StudentID))
-            {
-                ModelState.AddModelError("StudentID", "Student ID is required!");
-            }
-            else if (StudentID.Length > 10)
-            {
-                ModelState.AddModelError("StudentID", "Student ID must not exceed 10 characters.");
-            }
+            BCS RequestDirector = new();
+            Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
 
-            // Validate First Name
-            if (string.IsNullOrEmpty(FirstName))
+            if (EnrolledStudent != null)
             {
-                ModelState.AddModelError("FirstName", "First Name is required!");
-            }
-            else if (FirstName.Length > 50)
-            {
-                ModelState.AddModelError("FirstName", "First Name must not exceed 50 characters.");
-            }
+                EnrolledStudent.FirstName = FirstName;
+                EnrolledStudent.LastName = LastName;
+                EnrolledStudent.Email = Email;
 
-            // Validate Last Name
-            if (string.IsNullOrEmpty(LastName))
-            {
-                ModelState.AddModelError("LastName", "Last Name is required!");
-            }
-            else if (LastName.Length > 50)
-            {
-                ModelState.AddModelError("LastName", "Last Name must not exceed 50 characters.");
-            }
+                bool Confirmation = RequestDirector.ModifyStudent(EnrolledStudent);
 
-            // Validate Email
-            if (string.IsNullOrEmpty(Email))
-            {
-                ModelState.AddModelError("Email", "Email is required!");
-            }
-            else if (!IsValidEmail(Email))
-            {
-                ModelState.AddModelError("Email", "Please enter a proper email address.");
-            }
-
-            if (ModelState.IsValid)
-            {
-                BCS RequestDirector = new();
-                Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
-
-                if (EnrolledStudent != null)
+                if (Confirmation)
                 {
-                    EnrolledStudent.FirstName = FirstName;
-                    EnrolledStudent.LastName = LastName;
-                    EnrolledStudent.Email = Email;
-
-                    bool Confirmation = RequestDirector.ModifyStudent(EnrolledStudent);
-
-                    if (Confirmation)
-                    {
-                        Message = "Student has been modified successfully.";
-                    }
-                    else
-                    {
-                        Message = "Failed to modify the student.";
-                    }
+                    Message = "Student has been modified successfully.";
                 }
                 else
                 {
-                    Message = "No student found with the provided ID.";
+                    Message = "Failed to modify the student.";
                 }
             }
             else
             {
-                Message = "Form not valid!";
+                Message = "No student found with the provided ID.";
             }
-        }
-
-        private bool IsValidEmail(string email)
-        {
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            Regex regex = new Regex(pattern);
-            return regex.IsMatch(email);
         }
     }
 }

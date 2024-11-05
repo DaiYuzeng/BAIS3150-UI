@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Code Smaple</title>
     <link href="~/css/index.css" rel="stylesheet" />
-    <script src="~/lib/jquery/jquery.js"></script>
-    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("scriptContent", required: false) <!-- render a section -->
 </head>
 
 <body>
@@ -17,25 +15,25 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/Index")">Home</a>
+                        <a class="nav-link" href="~/Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/CreateProgram")">Create Program</a>
+                        <a class="nav-link" href="~/CreateProgram">Create Program</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/EnrollStudent")">Enroll Student</a>
+                        <a class="nav-link" href="~/EnrollStudent">Enroll Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/FindStudent")">Find Student</a>
+                        <a class="nav-link" href="~/FindStudent">Find Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/ModifyStudent")">Modify Student</a>
+                        <a class="nav-link" href="~/ModifyStudent">Modify Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/RemoveStudent")">Remove Student</a>
+                        <a class="nav-link" href="~/RemoveStudent">Remove Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Page("/FindProgram")">Find Program</a>
+                        <a class="nav-link" href="~/FindProgram">Find Program</a>
                     </li>
                 </ul>
             </div>
