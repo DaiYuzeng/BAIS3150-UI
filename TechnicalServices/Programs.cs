@@ -12,7 +12,7 @@ namespace ydai5.TechnicalServices;
 public class Programs
 {
 
-  private string ydai5ConnectionString = "Server=dev1.baist.ca;Database=ydai5;User Id=ydai5;Password=Xiaodai0712@;Encrypt=true;TrustServerCertificate=true;";
+  private string ydai5ConnectionString = "Server=dev1.baist.ca;Database=ydai5;User Id=ydai5;Password=Xiaodai0712@@;Encrypt=true;TrustServerCertificate=true;";
   
   public bool AddProgram(string ProgramCode, string Description)
   {

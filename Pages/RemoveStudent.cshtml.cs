@@ -11,9 +11,24 @@ namespace ydai5.Pages
 
         public string Message { get; set; } = string.Empty;
 
+        public Student? FoundStudent { get; set; } = null;
+
         public void OnGet(string studentId)
         {
-            StudentID = studentId;
+            if (!string.IsNullOrEmpty(studentId))
+            {
+                BCS RequestDirector = new();
+                FoundStudent = RequestDirector.FindStudent(studentId);
+
+                if (FoundStudent == null)
+                {
+                    Message = "Student not found.";
+                }
+                else
+                {
+                    StudentID = studentId;
+                }
+            }
         }
 
         public void OnPost()
@@ -37,6 +52,7 @@ namespace ydai5.Pages
                 if (Confirmation)
                 {
                     Message = "Student has been removed successfully.";
+                    FoundStudent = null; // Clear the FoundStudent to remove the details from the screen
                 }
                 else
                 {
