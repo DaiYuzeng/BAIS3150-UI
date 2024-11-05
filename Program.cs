@@ -11,6 +11,7 @@ namespace ydai5
             var app = builder.Build();
 
             app.UseStaticFiles();
+            app.UseExceptionHandler("/Error");
             app.UseRouting();
 
             app.MapRazorPages();
