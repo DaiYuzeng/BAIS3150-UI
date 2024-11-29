@@ -23,9 +23,6 @@
             <p><strong>First Name:</strong> @Model.EnrolledStudent.FirstName</p>
             <p><strong>Last Name:</strong> @Model.EnrolledStudent.LastName</p>
             <p><strong>Email:</strong> @Model.EnrolledStudent.Email</p>
-            <button onclick="location.href='@Url.Page("/ModifyStudent", new { studentId = Model.EnrolledStudent.StudentID })'">
-                Modify Student
-            </button>
         </div>
     }
 </div>
