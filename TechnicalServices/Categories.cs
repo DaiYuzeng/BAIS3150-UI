@@ -7,7 +7,7 @@ namespace ydai5.TechnicalServices
     public class Categories
     {
 
-        static string ydai5ConnectionString = "Server=dev1.baist.ca;Database=Northwind;User Id=ydai5;Password=Xiaodai0712@;Encrypt=true;TrustServerCertificate=true;";
+        static string ydai5ConnectionString = "Server=dev1.baist.ca;Database=Northwind;User Id=ydai5;Password=Xiaodai0712@@;Encrypt=true;TrustServerCertificate=true;";
         public List<Category> GetCategoryList()
         {
             List<Category> CategoryList = new();

@@ -12,25 +12,21 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>User Sign On</h2>
+    <h2>User Sign On</h2>
 
-        <button onclick="location.href='@Url.Page("/Welcome")'" class="btn btn-primary">Back</button>
-
-        <form method="post">
-            <div>
-                <label asp-for="UserID">UserID</label>
-                <input asp-for="UserID" class="form-control" name="UserID" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
-            <div>
-                <label asp-for="Password">Password</label>
-                <input asp-for="Password" type="password" class="form-control" name="Password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <input type="submit" class="btn btn-primary mt-5">Sign On</input>
-        </form>
-        <div>@Model.Message</div>
-    </div>
+    <form method="post">
+        <div>
+            <label>UserID</label>
+            <input asp-for="UserID" class="form-control" name="UserID" />
+            <span asp-validation-for="UserID"></span>
+        </div>
+        <div>
+            <label>Password</label>
+            <input asp-for="Password" type="password" name="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <input type="submit">Sign On</input>
+    </form>
+    <div>@Model.Message</div>
 </body>
 </html>
