@@ -21,12 +21,12 @@ namespace ydai5.Pages
 
         public string Message { get; set; } = string.Empty;
 
-        public void OnGet()
+        public void OnGet(string studentID)
         {
-            if (!string.IsNullOrEmpty(StudentID))
+            if (!string.IsNullOrEmpty(studentID))
             {
-                
-                // Load existing student details
+                StudentID = studentID;
+
                 BCS RequestDirector = new();
                 Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
 
@@ -48,7 +48,6 @@ namespace ydai5.Pages
 
         public void OnPost()
         {
-            Console.WriteLine("---------- Put ----------");
             BCS RequestDirector = new();
             Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
 

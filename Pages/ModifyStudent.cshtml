@@ -6,31 +6,29 @@
 }
 
 <h2>Modify Student</h2>
+
 <form method="get">
     <div>
-        <label>Student ID</label>
-        <input name="StudentID" value="@Model.StudentID" />
+        <label for="StudentID">Student ID</label>
+        <input id="StudentID" name="StudentID" value="@Model.StudentID" />
     </div>
-
-    <input type="submit" name="Submit" value="Find Student" />
+    <input type="submit" value="Find Student" />
 </form>
 
 <form method="post">
     <div>
-        <label>First Name</label>
-        <input name="FirstName" value="@Model.FirstName" />
+        <label for="FirstName">First Name</label>
+        <input id="FirstName" name="FirstName" value="@Model.FirstName" />
     </div>
-
     <div>
-        <label>Last Name</label>
-        <input name="LastName" value="@Model.LastName" />
+        <label for="LastName">Last Name</label>
+        <input id="LastName" name="LastName" value="@Model.LastName" />
     </div>
-
     <div>
-        <label>Email</label>
-        <input name="Email" value="@Model.Email" />
+        <label for="Email">Email</label>
+        <input id="Email" name="Email" value="@Model.Email" />
     </div>
-
-    <input type="submit" name="Submit" value="Modify Student" />
+    <input type="submit" value="Modify Student" />
 </form>
+
 <div>@Model.Message</div>

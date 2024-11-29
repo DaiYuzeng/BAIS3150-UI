@@ -19,6 +19,7 @@ namespace ydai5.Pages
             {
                 BCS RequestDirector = new();
                 EnrolledStudent = RequestDirector.FindStudent(studentId);
+                Console.WriteLine(EnrolledStudent.StudentID);
 
                 if (EnrolledStudent == null)
                 {
@@ -34,6 +35,8 @@ namespace ydai5.Pages
         public void OnPost()
         {
             BCS RequestDirector = new();
+
+            Console.WriteLine(StudentID);
 
             bool Confirmation = RequestDirector.RemoveStudent(StudentID);
 
