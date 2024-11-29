@@ -10,8 +10,14 @@ namespace ydai5
 
             var app = builder.Build();
 
+            //Configure the HTTP request pipeline
+            if (!app.Environment.IsDevelopment()) // check for production environment
+            {
+                app.UseDeveloperExceptionPage(); // not for production, remove for final release
+                                                 //app.UseExceptionHandler("/Error"); // customized error page, use for final release
+            }
+
             app.UseStaticFiles();
-            app.UseExceptionHandler("/Error");
             app.UseRouting();
 
             app.MapRazorPages();

@@ -7,23 +7,23 @@
 <h2>Find Student</h2>
 
 <form method="post">
-    <div class="form-group">
-        <label for="StudentID">Student ID</label>
-        <input name="StudentID" class="form-control" />
+    <div>
+        <label>Student ID</label>
+        <input name="StudentID" />
     </div>
 
-    <input type="submit" name="Submit" value="Find Student" class="btn btn-primary" />
+    <input type="submit" name="Submit" value="Find Student" />
 </form>
 <div class="mt-4">
     <h4>@Model.Message</h4>
     @if (Model.EnrolledStudent != null)
     {
-        <div class="card p-3">
+        <div>
             <p><strong>Student ID:</strong> @Model.EnrolledStudent.StudentID</p>
             <p><strong>First Name:</strong> @Model.EnrolledStudent.FirstName</p>
             <p><strong>Last Name:</strong> @Model.EnrolledStudent.LastName</p>
             <p><strong>Email:</strong> @Model.EnrolledStudent.Email</p>
-            <button onclick="location.href='@Url.Page("/ModifyStudent", new { studentId = Model.EnrolledStudent.StudentID })'" class="btn btn-warning mt-3">
+            <button onclick="location.href='@Url.Page("/ModifyStudent", new { studentId = Model.EnrolledStudent.StudentID })'">
                 Modify Student
             </button>
         </div>

@@ -21,29 +21,34 @@ namespace ydai5.Pages
 
         public string Message { get; set; } = string.Empty;
 
-        public void OnGet(string studentId)
+        public void OnGet()
         {
-            // Assuming we get the StudentID from the query parameter to load student details
-            StudentID = studentId;
-
-            // Load existing student details
-            BCS RequestDirector = new();
-            Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
-
-            if (EnrolledStudent != null)
+            if (!string.IsNullOrEmpty(StudentID))
             {
-                FirstName = EnrolledStudent.FirstName;
-                LastName = EnrolledStudent.LastName;
-                Email = EnrolledStudent.Email;
+                
+                // Load existing student details
+                BCS RequestDirector = new();
+                Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
+
+                Console.WriteLine(EnrolledStudent.FirstName);
+
+                if (EnrolledStudent != null)
+                {
+                    FirstName = EnrolledStudent.FirstName;
+                    LastName = EnrolledStudent.LastName;
+                    Email = EnrolledStudent.Email;
+                }
+                else
+                {
+                    Message = "No student found with the provided ID.";
+                }
             }
-            else
-            {
-                Message = "No student found with the provided ID.";
-            }
+            
         }
 
         public void OnPost()
         {
+            Console.WriteLine("---------- Put ----------");
             BCS RequestDirector = new();
             Student EnrolledStudent = RequestDirector.FindStudent(StudentID);
 

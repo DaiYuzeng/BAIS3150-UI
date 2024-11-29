@@ -4,29 +4,33 @@
     ViewData["Title"] = "Modify Student";
     Layout = "_Layout";
 }
+
 <h2>Modify Student</h2>
+<form method="get">
+    <div>
+        <label>Student ID</label>
+        <input name="StudentID" value="@Model.StudentID" />
+    </div>
+
+    <input type="submit" name="Submit" value="Find Student" />
+</form>
 
 <form method="post">
-    <div class="form-group">
-        <label for="StudentID">Student ID</label>
-        <input name="StudentID" id="StudentID" class="form-control" readonly />
+    <div>
+        <label>First Name</label>
+        <input name="FirstName" value="@Model.FirstName" />
     </div>
 
-    <div class="form-group">
-        <label for="FirstName">First Name</label>
-        <input name="FirstName" id="FirstName" class="form-control" />
+    <div>
+        <label>Last Name</label>
+        <input name="LastName" value="@Model.LastName" />
     </div>
 
-    <div class="form-group">
-        <label for="LastName">Last Name</label>
-        <input name="LastName" id="LastName" class="form-control" />
+    <div>
+        <label>Email</label>
+        <input name="Email" value="@Model.Email" />
     </div>
 
-    <div class="form-group">
-        <label for="Email">Email</label>
-        <input name="Email" id="Email" class="form-control" />
-    </div>
-
-    <input type="submit" name="Submit" value="Modify Student" class="btn btn-primary" />
+    <input type="submit" name="Submit" value="Modify Student" />
 </form>
 <div>@Model.Message</div>

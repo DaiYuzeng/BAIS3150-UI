@@ -67,7 +67,13 @@ namespace ydai5.Domain
         // Return the Program object, whether found or null
         return ActiveProgram;
     }
-  }
+    public DatabaseUser FindDatabaseUser()
+        {
+            DatabaseUsers DatabaseUserManager = new();
+            DatabaseUser CurrentDatabaseUser = DatabaseUserManager.GetDatabaseUser();
+            return CurrentDatabaseUser;
+        }
+    }
 }
 
 

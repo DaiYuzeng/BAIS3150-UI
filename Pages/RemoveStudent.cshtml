@@ -8,18 +8,17 @@
 <h2>Remove Student</h2>
 
 <form method="get">
-    <div class="form-group">
-        <label for="StudentID">Enter Student ID to Search</label>
-        <input name="StudentID" class="form-control" />
-        <span class="invalid-feedback"></span>
+    <div>
+        <label>Enter Student ID to Search</label>
+        <input name="StudentID" />
     </div>
 
-    <input type="submit" name="Search" value="Find Student" class="btn btn-primary" />
+    <input type="submit" name="Search" value="Find Student" />
 </form>
 
 @if (Model.EnrolledStudent != null)
 {
-    <div class="mt-4">
+    <div>
         <h4>Student Details</h4>
         <p><strong>Student ID:</strong> @Model.EnrolledStudent.StudentID</p>
         <p><strong>First Name:</strong> @Model.EnrolledStudent.FirstName</p>
@@ -28,9 +27,9 @@
 
         <form method="post">
             <input type="hidden" name="StudentID" />
-            <input type="submit" name="Submit" value="Remove Student" class="btn btn-danger" />
+            <input type="submit" name="Submit" value="Remove Student" />
         </form>
     </div>
 }
 
-<div class="mt-3 text-danger">@Model.Message</div>
+<div>@Model.Message</div>

@@ -9,17 +9,17 @@
 
 
 <form method="post">
-    <div class="form-group">
-        <label for="ProgramCode">Program Code</label>
-        <input name="ProgramCode" id="ProgramCode" class="form-control" />
+    <div>
+        <label>Program Code</label>
+        <input name="ProgramCode" />
     </div>
 
-    <input type="submit" name="Submit" value="Find Program" class="btn btn-primary" />
+    <input type="submit" name="Submit" value="Find Program" />
 </form>
 
 @if (Model.ActiveProgram != null)
 {
-    <div class="mt-5">
+    <div>
         <h4>Program Details</h4>
         <p><strong>Program Code:</strong> @Model.ActiveProgram.ProgramCode</p>
         <p><strong>Description:</strong> @Model.ActiveProgram.Description</p>
@@ -38,4 +38,4 @@
     </div>
 }
 
-<div class="mt-3 text-danger">@Model.Message</div>
+<div>@Model.Message</div>
