@@ -1,0 +1,32 @@
+@page
+@model ydai5.Pages.DeleteItemModel
+@{
+    ViewData["Title"] = "Delete Item";
+    Layout = "_Layout";
+}
+
+<h2>Delete Item</h2>
+
+<form method="get">
+    <div>
+        <label>Item Code</label>
+        <input asp-for="ItemCode" />
+    </div>
+    <input type="submit" value="Find Item" />
+</form>
+
+<form method="post">
+    <div>
+        <label>Description</label>
+        <input asp-for="Description" readonly />
+    </div>
+    <div>
+        <label>Unit Price</label>
+        <input type="number" asp-for="UnitPrice" readonly />
+    </div>
+    <input type="submit" value="Delete Item" />
+    <button type="reset">Reset</button>
+    <button type="reset"><a href="~/Index">Cancel</a></button>
+</form>
+
+<div>@Model.Message</div>

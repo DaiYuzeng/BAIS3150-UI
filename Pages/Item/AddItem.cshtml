@@ -1,0 +1,32 @@
+﻿@page
+@model ydai5.Pages.AddItemModel
+@{
+    ViewData["Title"] = "Add Item";
+    Layout = "_Layout";
+}
+
+<h2>Add Item</h2>
+<form method="post">
+    <div>
+        <label>Item Code</label>
+        <input asp-for="ItemCode" />
+        <span asp-validation-for="ItemCode"></span>
+    </div>
+
+    <div>
+        <label>Item Description</label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <label>Unit Price</label>
+        <input asp-for="UnitPrice" />
+        <span asp-validation-for="UnitPrice"></span>
+    </div>
+
+    <input type="submit" name="Submit" value="Add Item" />
+    <button type="reset">Reset</button>
+    <button type="reset"><a href="~/Index">Cancel</a></button>
+</form>
+<div>@Model.Message</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model ydai5.Pages.UpdateCustomerModel
+@{
+    ViewData["Title"] = "Update Customer";
+    Layout = "_Layout";
+}
+
+<h2>Update Customer</h2>
+
+<form method="get">
+    <div>
+        <label>Customer ID</label>
+        <input type="number" asp-for="CustomerID" min="100000000" />
+    </div>
+    <input type="submit" value="Find Customer" />
+</form>
+
+<form method="post">
+    <div>
+        <label>Customer Name</label>
+        <input asp-for="CustomerName" />
+        <span asp-validation-for="CustomerName"></span>
+    </div>
+
+    <div>
+        <label>Address</label>
+        <input asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+
+    <div>
+        <label>City</label>
+        <input asp-for="City" />
+        <span asp-validation-for="City"></span>
+    </div>
+
+    <div>
+        <label>Province</label>
+        <input asp-for="Province" />
+        <span asp-validation-for="Province"></span>
+    </div>
+
+    <div>
+        <label>Postal Code</label>
+        <input asp-for="PostalCode" />
+        <span asp-validation-for="PostalCode"></span>
+    </div>
+
+    <input type="submit" value="Update Customer" />
+    <button type="reset">Reset</button>
+    <button type="reset"><a href="~/Index">Cancel</a></button>
+</form>
+
+<div>@Model.Message</div>

@@ -1,0 +1,49 @@
+@page
+@model ydai5.Pages.DeleteCustomerModel
+@{
+    ViewData["Title"] = "Delete Customer";
+    Layout = "_Layout";
+}
+
+<h2>Delete Customer</h2>
+
+<form method="get">
+    <div>
+        <label>Customer ID</label>
+        <input type="number" asp-for="CustomerID" min="100000000" />
+    </div>
+    <input type="submit" value="Find Customer" />
+</form>
+
+<form method="post">
+    <div>
+        <label>Customer Name</label>
+        <input asp-for="CustomerName" readonly />
+    </div>
+
+    <div>
+        <label>Address</label>
+        <input asp-for="Address" readonly />
+    </div>
+
+    <div>
+        <label>City</label>
+        <input asp-for="City" readonly />
+    </div>
+
+    <div>
+        <label>Province</label>
+        <input asp-for="Province" readonly />
+    </div>
+
+    <div>
+        <label>Postal Code</label>
+        <input asp-for="PostalCode" readonly />
+    </div>
+
+    <input type="submit" value="Delete Customer" />
+    <button type="reset">Reset</button>
+    <button type="reset"><a href="~/Index">Cancel</a></button>
+</form>
+
+<div>@Model.Message</div>

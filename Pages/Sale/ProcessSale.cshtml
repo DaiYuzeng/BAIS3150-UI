@@ -1,0 +1,171 @@
+@page
+@model ydai5.Pages.ProcessSaleModel
+@{
+    ViewData["Title"] = "Process Sale";
+    Layout = "_Layout";
+}
+
+<h2>Process Sale</h2>
+
+<form method="post">
+    <h3>Sale Details</h3>
+    <div>
+        <label>Customer</label>
+        <input type="number" asp-for="CustomerID" min="100000000" />
+        <span asp-validation-for="CustomerID"></span>
+    </div>
+    <div>
+        <label>Sale Date</label>
+        <input type="date" asp-for="SaleDate" />
+        <span asp-validation-for="SaleDate"></span>
+    </div>
+    <div>
+        <label>Sales Person</label>
+        <input asp-for="SalesPerson" />
+        <span asp-validation-for="SalesPerson"></span>
+    </div>
+
+    <h3>Sale Items</h3>
+    <table id="saleItemsTable">
+        <thead>
+            <tr>
+                <th>Item Code</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Item Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.SaleItems.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input name="SaleItems[@i].ItemCode" value="@Model.SaleItems[i].ItemCode" 
+                               oninput="updateItemTotal(this)" data-row-index="@i" />
+                        <span asp-validation-for="SaleItems[@i].ItemCode"></span>
+                    </td>
+                    <td>
+                        <input name="SaleItems[@i].Quantity" type="number" min="1" 
+                               value="@Model.SaleItems[i].Quantity" 
+                               oninput="updateItemTotal(this)" data-row-index="@i" />
+                        <span asp-validation-for="SaleItems[@i].Quantity"></span>
+                    </td>
+                    <td>
+                        <input name="SaleItems[@i].UnitPrice" value="@Model.SaleItems[i].UnitPrice" readonly />
+                    </td>
+                    <td>
+                        <input name="SaleItems[@i].ItemTotal" value="@Model.SaleItems[i].ItemTotal" readonly />
+                    </td>
+                    <td>
+                        <button type="button" onclick="removeItem(this)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="button" onclick="addItem()">Add Item</button>
+
+    <h3>Totals</h3>
+    <div>
+        <label>Subtotal</label>
+        <input asp-for="SubTotal" readonly />
+    </div>
+    <div>
+        <label>GST</label>
+        <input asp-for="GST" />
+        <span asp-validation-for="GST"></span>
+    </div>
+    <div>
+        <label>Total</label>
+        <input asp-for="SaleTotal" readonly />
+    </div>
+
+    <div>
+        <button type="submit">Process Sale</button>
+        <button type="reset">Reset</button>
+        <button><a href="~/Index">Cancel</a></button>
+    </div>
+</form>
+<div>
+    @Model.Message
+</div>
+
+@section scriptContent {
+    <script>
+        async function updateItemTotal(element) {
+            const rowIndex = element.getAttribute("data-row-index");
+            const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
+            const row = table.rows[rowIndex];
+
+            const itemCodeInput = row.querySelector(`input[name="SaleItems[${rowIndex}].ItemCode"]`);
+            const quantityInput = row.querySelector(`input[name="SaleItems[${rowIndex}].Quantity"]`);
+            const unitPriceInput = row.querySelector(`input[name="SaleItems[${rowIndex}].UnitPrice"]`);
+            const itemTotalInput = row.querySelector(`input[name="SaleItems[${rowIndex}].ItemTotal"]`);
+
+            const itemCode = itemCodeInput.value.trim();
+            const quantity = parseInt(quantityInput.value, 10) || 0;
+
+            if (itemCode) {
+                const unitPrice = await fetchUnitPrice(itemCode);
+                unitPriceInput.value = unitPrice.toFixed(2);
+                const itemTotal = quantity * unitPrice;
+                itemTotalInput.value = itemTotal.toFixed(2);
+
+                updateSubTotal();
+            }
+        }
+
+        async function fetchUnitPrice(itemCode) {
+            const response = await fetch(`/api/Items/GetUnitPrice?itemCode=${itemCode}`);
+            if (response.ok) {
+                const data = await response.json();
+                return parseFloat(data.unitPrice || 0);
+            }
+            return 0;
+        }
+
+        function updateSubTotal() {
+            const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
+            const rows = table.rows;
+            let subTotal = 0;
+
+            for (let i = 0; i < rows.length; i++) {
+                const itemTotalInput = rows[i].querySelector(`input[name="SaleItems[${i}].ItemTotal"]`);
+                const itemTotal = parseFloat(itemTotalInput.value || 0);
+                subTotal += itemTotal;
+            }
+
+            document.querySelector('input[name="SubTotal"]').value = subTotal.toFixed(2);
+        }
+
+        function addItem() {
+            const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
+            const rowCount = table.rows.length;
+            const newRow = table.insertRow(rowCount);
+
+            newRow.innerHTML = `
+                <td>
+                    <input name="SaleItems[${rowCount}].ItemCode" oninput="updateItemTotal(this)" data-row-index="${rowCount}" />
+                </td>
+                <td>
+                    <input name="SaleItems[${rowCount}].Quantity" type="number" min="1" oninput="updateItemTotal(this)" data-row-index="${rowCount}" />
+                </td>
+                <td>
+                    <input name="SaleItems[${rowCount}].UnitPrice" readonly />
+                </td>
+                <td>
+                    <input name="SaleItems[${rowCount}].ItemTotal" readonly />
+                </td>
+                <td>
+                    <button type="button" onclick="removeItem(this)">Remove</button>
+                </td>`;
+        }
+
+        function removeItem(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+            updateSubTotal();
+        }
+    </script>
+}
