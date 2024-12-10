@@ -102,6 +102,7 @@
 
 @section scriptContent {
     <script>
+        const BASE_API_URL = "https://dev1.baist.ca/students/ydai5/api";
         function FormChanged(form) {
             updateTotal();
             saveFormData();
@@ -113,7 +114,7 @@
             
 
             if (customerId) {
-                const response = await fetch(`/api/customers/GetCustomer?customerId=${customerId}`);
+                const response = await fetch(`${BASE_API_URL}/customers/GetCustomer?customerId=${customerId}`);
                 
                 if (response.ok) {
                     const { foundCustomer: { customerName, address, city, province, postalCode } } = await response.json();
@@ -173,7 +174,7 @@
                 console.log('Please enter an Item Code.');
                 return;
             }
-            const response = await fetch(`/api/Items/GetUnitPrice?itemCode=${itemCode}`);
+            const response = await fetch(`${BASE_API_URL}/Items/GetUnitPrice?itemCode=${itemCode}`);
             if (response.ok) {
                 const data = await response.json();
                 unitPriceInput.value = data.unitPrice;
