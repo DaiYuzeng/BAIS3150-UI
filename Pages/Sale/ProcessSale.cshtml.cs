@@ -8,6 +8,11 @@ namespace ydai5.Pages
     public class ProcessSaleModel : PageModel
     {
         [BindProperty]
+        [Required(ErrorMessage = "Sale Number is required.")]
+        public int SaleNumber { get; set; }
+                        
+
+        [BindProperty]
         [Required(ErrorMessage = "Sale Date is required.")]
         public DateTime SaleDate { get; set; }
 
@@ -40,11 +45,9 @@ namespace ydai5.Pages
             {
                 ABCPOS ABCHardware = new();
 
-                SubTotal = SaleItems.Sum(item => item.ItemTotal);
-                SaleTotal = SubTotal * (1 + (GST / 100m));
-
                 Sale ABCSale = new Sale
                 {
+                    SaleNumber = SaleNumber,
                     SaleDate = SaleDate,
                     SalesPerson = SalesPerson,
                     CustomerID = CustomerID,
@@ -54,12 +57,11 @@ namespace ydai5.Pages
                     SaleItems = SaleItems
                 };
 
-                int SaleNumber = ABCHardware.ProcessSale(ABCSale);
+                int CreatedSaleNumber = ABCHardware.ProcessSale(ABCSale);
 
-                if (SaleNumber > 0)
+                if (CreatedSaleNumber > 0)
                 {
                     Message = $"Sale processed successfully! Sale Number: {SaleNumber}";
-                    SaleItems.Clear();
                 }
                 else
                 {

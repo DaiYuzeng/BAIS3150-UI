@@ -19,7 +19,4 @@ public class Customer
 		public string Province { get; set; } = string.Empty;
 
 		public string PostalCode { get; set; } = string.Empty;
-
-		// Navigation property for related Sales
-		public List<Sale> Sales { get; set; } = new List<Sale>();
 }

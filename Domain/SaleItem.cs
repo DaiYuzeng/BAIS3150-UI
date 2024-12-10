@@ -15,9 +15,4 @@ public class SaleItem
 	public int Quantity { get; set; }
 
 	public decimal ItemTotal { get; set; }
-
-	// Navigation properties for related Sale and Item
-	public Sale Sale { get; set; } = null!;
-
-	public Item Item { get; set; } = null!;
 }

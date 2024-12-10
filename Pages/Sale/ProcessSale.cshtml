@@ -7,84 +7,93 @@
 
 <h2>Process Sale</h2>
 
-<form method="post">
+<form method="post" oninput="FormChanged(this)">
     <h3>Sale Details</h3>
+
     <div>
-        <label>Customer</label>
-        <input type="number" asp-for="CustomerID" min="100000000" />
-        <span asp-validation-for="CustomerID"></span>
+        <label>Sale Number</label>
+        <input type="number" asp-for="SaleNumber" min="100000000" />
+        <span asp-validation-for="SaleNumber"></span>
     </div>
-    <div>
-        <label>Sale Date</label>
-        <input type="date" asp-for="SaleDate" />
-        <span asp-validation-for="SaleDate"></span>
-    </div>
+
     <div>
         <label>Sales Person</label>
         <input asp-for="SalesPerson" />
         <span asp-validation-for="SalesPerson"></span>
     </div>
+    
+    <div>
+        <label>Sale Date</label>
+        <input type="date" asp-for="SaleDate" />
+        <span asp-validation-for="SaleDate"></span>
+    </div>
+    <hr />
+    <h3>Customer Info</h3>
+    <div>
+        <div>
+            <label>Customer</label>
+            <input type="number" asp-for="CustomerID" min="100000000" />
+            <button type="button" onclick="getCustomer()">View Customer</button>
+            <span asp-validation-for="CustomerID"></span>
+        </div>
+        <div>
+            <p>Name: <input id="customerName" name="customerName" readonly /></p>
+            <p>Address: <input id="customerAddress" name="customerAddress" readonly /></p>
+            <p>City: <input id="customerCity" name="customerCity" readonly /></p>
+            <p>Province: <input id="customerProvince" name="customerProvince" readonly /></p>
+            <p>Postal Code: <input id="customerPostalCode" name="customerPostalCode" readonly /></p>
+        </div>
+    </div>
+
+   <hr /> 
 
     <h3>Sale Items</h3>
     <table id="saleItemsTable">
         <thead>
             <tr>
                 <th>Item Code</th>
-                <th>Quantity</th>
                 <th>Unit Price</th>
+                <th>Quantity</th>
                 <th>Item Total</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @for (int i = 0; i < Model.SaleItems.Count; i++)
-            {
-                <tr>
-                    <td>
-                        <input name="SaleItems[@i].ItemCode" value="@Model.SaleItems[i].ItemCode" 
-                               oninput="updateItemTotal(this)" data-row-index="@i" />
-                        <span asp-validation-for="SaleItems[@i].ItemCode"></span>
-                    </td>
-                    <td>
-                        <input name="SaleItems[@i].Quantity" type="number" min="1" 
-                               value="@Model.SaleItems[i].Quantity" 
-                               oninput="updateItemTotal(this)" data-row-index="@i" />
-                        <span asp-validation-for="SaleItems[@i].Quantity"></span>
-                    </td>
-                    <td>
-                        <input name="SaleItems[@i].UnitPrice" value="@Model.SaleItems[i].UnitPrice" readonly />
-                    </td>
-                    <td>
-                        <input name="SaleItems[@i].ItemTotal" value="@Model.SaleItems[i].ItemTotal" readonly />
-                    </td>
-                    <td>
-                        <button type="button" onclick="removeItem(this)">Remove</button>
-                    </td>
-                </tr>
-            }
         </tbody>
     </table>
     <button type="button" onclick="addItem()">Add Item</button>
+
+    <hr />
 
     <h3>Totals</h3>
     <div>
         <label>Subtotal</label>
         <input asp-for="SubTotal" readonly />
     </div>
+
     <div>
         <label>GST</label>
-        <input asp-for="GST" />
+        <input asp-for="GST" />(%)
         <span asp-validation-for="GST"></span>
     </div>
     <div>
         <label>Total</label>
         <input asp-for="SaleTotal" readonly />
+        
     </div>
 
     <div>
-        <button type="submit">Process Sale</button>
-        <button type="reset">Reset</button>
-        <button><a href="~/Index">Cancel</a></button>
+        <p>
+            <button type="submit">Process Sale</button>
+            <button type="reset">Reset</button>
+            <button><a href="~/Index">Cancel</a></button>
+        </p>
+
+        <p>
+            <button type="button" onclick="loadLocalStorage()">Load the last edit</button>
+            <button type="button" onclick="clearLocalStorage()">Clear the history</button>
+        </p>
+        
     </div>
 </form>
 <div>
@@ -93,6 +102,44 @@
 
 @section scriptContent {
     <script>
+        function FormChanged(form) {
+            updateTotal();
+            saveFormData();
+        }
+
+
+        async function getCustomer() {
+            const customerId = document.getElementById("CustomerID").value;
+            
+
+            if (customerId) {
+                const response = await fetch(`/api/customers/GetCustomer?customerId=${customerId}`);
+                
+                if (response.ok) {
+                    const { foundCustomer: { customerName, address, city, province, postalCode } } = await response.json();
+
+                    setCustomer(customerName, address, city, province, postalCode)
+                    saveFormData();
+                } else {
+                    console.log("Couldn't find the customer");
+                }
+            }
+        }
+
+        function setCustomer(customerName, address, city, province, postalCode) {
+            const $name = document.getElementById("customerName");
+            const $address = document.getElementById("customerAddress");
+            const $city = document.getElementById("customerCity");
+            const $province = document.getElementById("customerProvince");
+            const $postalCode = document.getElementById("customerPostalCode");
+
+            $name.value = customerName;
+            $address.value = address;
+            $city.value = city;
+            $province.value = province;
+            $postalCode.value = postalCode;
+        }
+
         async function updateItemTotal(element) {
             const rowIndex = element.getAttribute("data-row-index");
             const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
@@ -105,10 +152,9 @@
 
             const itemCode = itemCodeInput.value.trim();
             const quantity = parseInt(quantityInput.value, 10) || 0;
+            const unitPrice = unitPriceInput.value;
 
-            if (itemCode) {
-                const unitPrice = await fetchUnitPrice(itemCode);
-                unitPriceInput.value = unitPrice.toFixed(2);
+            if (itemCode && unitPrice) {
                 const itemTotal = quantity * unitPrice;
                 itemTotalInput.value = itemTotal.toFixed(2);
 
@@ -116,13 +162,24 @@
             }
         }
 
-        async function fetchUnitPrice(itemCode) {
+        async function fetchUnitPrice(rowIndex) {
+            const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
+            const row = table.rows[rowIndex];
+            const itemCodeInput = row.querySelector(`input[name="SaleItems[${rowIndex}].ItemCode"]`);
+            const itemCode = itemCodeInput.value.trim();
+            const unitPriceInput = row.querySelector(`input[name="SaleItems[${rowIndex}].UnitPrice"]`);
+
+            if (!itemCode) {
+                console.log('Please enter an Item Code.');
+                return;
+            }
             const response = await fetch(`/api/Items/GetUnitPrice?itemCode=${itemCode}`);
             if (response.ok) {
                 const data = await response.json();
-                return parseFloat(data.unitPrice || 0);
+                unitPriceInput.value = data.unitPrice;
+            } else {
+                console.log("Couldn't find the item");
             }
-            return 0;
         }
 
         function updateSubTotal() {
@@ -139,20 +196,37 @@
             document.querySelector('input[name="SubTotal"]').value = subTotal.toFixed(2);
         }
 
+        function updateTotal() {
+            const subTotalInput = document.querySelector('input[name="SubTotal"]');
+            const gstInput = document.querySelector('input[name="GST"]');
+            const totalInput = document.querySelector('input[name="SaleTotal"]');
+
+            const subTotal = parseFloat(subTotalInput.value || 0);
+            const gst = parseFloat(gstInput.value || 0);
+
+            const total = subTotal * (1 + gst * 0.01);
+            totalInput.value = total.toFixed(2);
+        }
+
+
+        window.debouncedFetchUnitPrice = debounce(fetchUnitPrice, 500);
+
         function addItem() {
             const table = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
             const rowCount = table.rows.length;
             const newRow = table.insertRow(rowCount);
+            
 
             newRow.innerHTML = `
                 <td>
-                    <input name="SaleItems[${rowCount}].ItemCode" oninput="updateItemTotal(this)" data-row-index="${rowCount}" />
-                </td>
-                <td>
-                    <input name="SaleItems[${rowCount}].Quantity" type="number" min="1" oninput="updateItemTotal(this)" data-row-index="${rowCount}" />
+                    <input type="hidden" name="SaleItems[${rowCount}].SaleNumber" data-row-index="${rowCount}" value="${@Model.SaleNumber}" />
+                    <input name="SaleItems[${rowCount}].ItemCode" oninput="debouncedFetchUnitPrice(${rowCount})" data-row-index="${rowCount}" />
                 </td>
                 <td>
                     <input name="SaleItems[${rowCount}].UnitPrice" readonly />
+                </td>
+                <td>
+                    <input name="SaleItems[${rowCount}].Quantity" type="number" min="1" oninput="updateItemTotal(this)" data-row-index="${rowCount}" />
                 </td>
                 <td>
                     <input name="SaleItems[${rowCount}].ItemTotal" readonly />
@@ -167,5 +241,112 @@
             row.remove();
             updateSubTotal();
         }
+
+        function debounce(func, wait) {
+            let timer = null;
+
+            return function(...args) {
+                const context = this;
+
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    timeoutID = null;
+                    func.apply(context, args);
+                }, wait)
+            }
+        }
+
+
+
+        const storageKey = "processSaleFormData";
+
+        function saveFormData() {
+            const formData = new FormData(document.querySelector("form"));
+            const data = {};
+
+            console.log(formData)
+
+            formData.forEach((value, key) => {
+                // Allow multiple values for the same key
+                if (data[key]) {
+                    data[key] = [].concat(data[key], value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            localStorage.setItem(storageKey, JSON.stringify(data));
+            console.log("Form data saved:", data);
+        }
+
+        function loadLocalStorage() {
+            const storedData = localStorage.getItem(storageKey);
+
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                console.log("Loading data:", data);
+
+                // Load regular form inputs
+                for (const key in data) {
+                    if (key.startsWith("SaleItems[")) {
+                        continue; // Skip dynamic sale items for now
+                    }
+
+                    const elements = document.getElementsByName(key);
+
+                    if (elements.length > 0) {
+                        const element = elements[0];
+
+                        if (element.type === "radio" || element.type === "checkbox") {
+                            elements.forEach((e) => {
+                                e.checked = data[key].includes(e.value);
+                            });
+                        } else {
+                            element.value = data[key];
+                        }
+                    }
+                }
+
+                // Recreate sale items table rows
+                const saleItems = Object.keys(data).filter((key) => key.startsWith("SaleItems["));
+                const saleItemsTable = document.getElementById("saleItemsTable").getElementsByTagName("tbody")[0];
+                saleItemsTable.innerHTML = ""; // Clear existing rows
+
+                const rowIndexes = new Set(
+                    saleItems.map((key) => key.match(/SaleItems\[(\d+)\]/)[1])
+                );
+
+                rowIndexes.forEach((rowIndex) => {
+                    const newRow = saleItemsTable.insertRow();
+
+                    newRow.innerHTML = `
+                        <td>
+                            <input type="hidden" name="SaleItems[${rowIndex}].SaleNumber" value="${data[`SaleItems[${rowIndex}].SaleNumber`] || ''}" />
+                            <input name="SaleItems[${rowIndex}].ItemCode" value="${data[`SaleItems[${rowIndex}].ItemCode`] || ''}" oninput="debouncedFetchUnitPrice(${rowIndex})" data-row-index="${rowIndex}" />
+                        </td>
+                        <td>
+                            <input name="SaleItems[${rowIndex}].UnitPrice" value="${data[`SaleItems[${rowIndex}].UnitPrice`] || ''}" readonly />
+                        </td>
+                        <td>
+                            <input name="SaleItems[${rowIndex}].Quantity" value="${data[`SaleItems[${rowIndex}].Quantity`] || ''}" type="number" min="1" oninput="updateItemTotal(this)" data-row-index="${rowIndex}" />
+                        </td>
+                        <td>
+                            <input name="SaleItems[${rowIndex}].ItemTotal" value="${data[`SaleItems[${rowIndex}].ItemTotal`] || ''}" readonly />
+                        </td>
+                        <td>
+                            <button type="button" onclick="removeItem(this)">Remove</button>
+                        </td>`;
+                });
+            } else {
+                console.log("No saved data found.");
+            }
+        }
+
+
+        function clearLocalStorage() {
+            localStorage.removeItem(storageKey);
+            console.log("Stored form data cleared.");
+        }
+
     </script>
 }

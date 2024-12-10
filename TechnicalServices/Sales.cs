@@ -302,7 +302,9 @@ namespace ydai5.TechnicalServices
 
         public int AddSale(Sale ABCSale)
         {
-            int saleNumber;
+            Console.WriteLine("------------SaleNumber--------------");
+            Console.WriteLine(ABCSale.SaleNumber);
+            Console.WriteLine("------------SaleNumber--------------");
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -315,6 +317,7 @@ namespace ydai5.TechnicalServices
                         CommandType = CommandType.StoredProcedure
                     };
 
+                    addSaleCommand.Parameters.AddWithValue("@SaleNumber", ABCSale.SaleNumber);
                     addSaleCommand.Parameters.AddWithValue("@SaleDate", ABCSale.SaleDate);
                     addSaleCommand.Parameters.AddWithValue("@SalesPerson", ABCSale.SalesPerson);
                     addSaleCommand.Parameters.AddWithValue("@SubTotal", ABCSale.SubTotal);
@@ -322,14 +325,7 @@ namespace ydai5.TechnicalServices
                     addSaleCommand.Parameters.AddWithValue("@SaleTotal", ABCSale.SaleTotal);
                     addSaleCommand.Parameters.AddWithValue("@CustomerID", ABCSale.CustomerID);
 
-                    SqlParameter saleNumberParam = new SqlParameter("@SaleNumber", SqlDbType.Int)
-                    {
-                        Direction = ParameterDirection.Output
-                    };
-                    addSaleCommand.Parameters.Add(saleNumberParam);
-
                     addSaleCommand.ExecuteNonQuery();
-                    saleNumber = (int)saleNumberParam.Value;
 
                     foreach (var item in ABCSale.SaleItems)
                     {
@@ -338,7 +334,7 @@ namespace ydai5.TechnicalServices
                             CommandType = CommandType.StoredProcedure
                         };
 
-                        addSaleItemCommand.Parameters.AddWithValue("@SaleNumber", saleNumber);
+                        addSaleItemCommand.Parameters.AddWithValue("@SaleNumber", ABCSale.SaleNumber);
                         addSaleItemCommand.Parameters.AddWithValue("@ItemCode", item.ItemCode);
                         addSaleItemCommand.Parameters.AddWithValue("@Quantity", item.Quantity);
                         addSaleItemCommand.Parameters.AddWithValue("@ItemTotal", item.ItemTotal);
@@ -350,7 +346,8 @@ namespace ydai5.TechnicalServices
                 }
             }
 
-            return saleNumber;
+            return ABCSale.SaleNumber;
         }
+
     }
 }

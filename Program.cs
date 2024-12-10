@@ -1,3 +1,5 @@
+using ydai5.Domain;
+
 namespace ydai5
 {
     public class Program
@@ -6,6 +8,7 @@ namespace ydai5
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<ABCPOS>();
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
@@ -20,6 +23,7 @@ namespace ydai5
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.MapControllers();
             app.MapRazorPages();
 
             app.Run();

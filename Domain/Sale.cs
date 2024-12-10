@@ -22,9 +22,5 @@ public class Sale
 
 	public int CustomerID { get; set; }
 
-	// Navigation property for related Customer
-	public Customer Customer { get; set; } = null!;
-
-	// Navigation property for related SaleItems
 	public List<SaleItem> SaleItems { get; set; } = new List<SaleItem>();
 }

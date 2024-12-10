@@ -15,7 +15,4 @@ public class Item
 	public decimal UnitPrice { get; set; }
 
 	public string Status { get; set; } = string.Empty;
-
-	// Navigation property for related SaleItems
-	public List<SaleItem> SaleItems { get; set; } = new List<SaleItem>();
 }
