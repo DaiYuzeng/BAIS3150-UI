@@ -11,14 +11,22 @@ namespace ydai5.TechnicalServices;
 
 public class Students
 {
-
-    private string ydai5ConnectionString = "Server=dev1.baist.ca;Database=ydai5;User Id=ydai5;Password=Xiaodai0712@@;Encrypt=true;TrustServerCertificate=true;";
+    private string? _connectionString;
+	public Students()
+	{
+		// constructor logic
+		ConfigurationBuilder Builder = new();
+		Builder.SetBasePath(Directory.GetCurrentDirectory());
+		Builder.AddJsonFile("appsettings.json");
+		IConfiguration Configuration = Builder.Build();
+		_connectionString = Configuration.GetConnectionString("BAIS3150");
+	}
   
     public bool AddStudent(Student accessptedStudent, string programCode)
   {
     bool Success = false;
 
-    using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+    using (SqlConnection connection = new SqlConnection(_connectionString))
     {
       connection.Open();
 
@@ -89,7 +97,7 @@ public class Students
 
       Student? student = null;
 
-      using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
           connection.Open();
           
@@ -142,7 +150,7 @@ public class Students
 
       Console.WriteLine("UpdateStudent");
 
-      using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
           connection.Open();
 
@@ -208,7 +216,7 @@ public class Students
 
       Console.WriteLine("DeleteStudent");
 
-      using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
           connection.Open();
 
@@ -253,7 +261,7 @@ public class Students
 
         Console.WriteLine("GetStudentsByProgram");
 
-        using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+        using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             connection.Open();
 

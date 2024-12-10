@@ -12,7 +12,16 @@ namespace ydai5.TechnicalServices;
 public class Programs
 {
 
-  private string ydai5ConnectionString = "Server=dev1.baist.ca;Database=ydai5;User Id=ydai5;Password=Xiaodai0712@@;Encrypt=true;TrustServerCertificate=true;";
+ 	private string? _connectionString;
+	public Programs()
+	{
+		// constructor logic
+		ConfigurationBuilder Builder = new();
+		Builder.SetBasePath(Directory.GetCurrentDirectory());
+		Builder.AddJsonFile("appsettings.json");
+		IConfiguration Configuration = Builder.Build();
+		_connectionString = Configuration.GetConnectionString("BAIS3150");
+	}
   
   public bool AddProgram(string ProgramCode, string Description)
   {
@@ -20,7 +29,7 @@ public class Programs
 
       Console.WriteLine("AddProgram");
 
-      using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
           connection.Open();
 
@@ -68,7 +77,7 @@ public class Programs
       
       Console.WriteLine("GetProgram");
 
-      using (SqlConnection connection = new SqlConnection(ydai5ConnectionString))
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
           connection.Open();
 
